@@ -1,0 +1,88 @@
+<!-- @@ Record Misconduct Modal @e -->
+<div class="modal fade" role="dialog" id="profile-edit">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+            <div class="modal-body modal-body-lg">
+                <h5 class="title">Qoidabuzarlikni qayd etish</h5>
+                <ul class="nk-nav nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#personal">MM va TX bo'yicha</a>
+                    </li>
+                    <!--                    <li class="nav-item">-->
+                    <!--                        <a class="nav-link" data-bs-toggle="tab" href="#address">Boshqa</a>-->
+                    <!--                    </li>-->
+                </ul><!-- .nav-tabs -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="personal">
+                        <form action="/safety/record-misconduct" method="post">
+                            {% csrf_token %}
+                            <div class="row gy-4">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="full-name">F.I.Sh.</label>
+                                        <input type="text" class="form-control form-control-lg" id="full-name"
+                                               value="{{ fullname }}" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="address-county">Sababi</label>
+                                        <select name="reason" class="form-select js-select2" id="address-county" data-ui="lg">
+                                            <option value="Ximoya bosh kiyimini kiymagan" selected>Ximoya bosh kiyimini kiymagan</option>
+                                            <option value="Maxsus oyoq kiyim kiymagan">Maxsus oyoq kiyim kiymagan</option>
+                                            <option value="Yo'riqnoma muddati tugagan">Yo'riqnoma muddati tugagan</option>
+                                            <option value="Tibbiy ko'rik muddati tugagan">Tibbiy ko'rik muddati tugagan</option>
+                                            <option value="Boshqa">Boshqa</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="phone-no">Telefon raqami</label>
+                                        <input type="text" class="form-control form-control-lg" id="phone-no" value="+998 {{ phone }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="comment">Izoh</label>
+                                        <input name="comment" type="text" class="form-control form-control-lg" id="comment">
+                                    </div>
+                                </div>
+                                <div class="col-md-6" style="display: none">
+                                    <div class="form-group">
+                                        <label class="form-label" for="pin">JShShIR</label>
+                                        <input name="pin" type="text" class="form-control form-control-lg" id="pin" value="{{ pin }}">
+                                    </div>
+                                </div>
+                                <!--                            <div class="col-md-6">-->
+                                <!--                                <div class="form-group">-->
+                                <!--                                    <label class="form-label" for="birth-day">Date of Birth</label>-->
+                                <!--                                    <input type="text" class="form-control form-control-lg date-picker" id="birth-day" placeholder="Enter your birth-date">-->
+                                <!--                                </div>-->
+                                <!--                            </div>-->
+
+                                <div class="col-12">
+                                    <div class="custom-control custom-switch">
+                                        <input name="coupon" type="checkbox" class="custom-control-input" id="latest-sale">
+                                        <label class="custom-control-label" for="latest-sale">1-sonli taloni olingan</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <ul class="align-center flex-wrap flex-sm-nowrap gx-4 gy-2">
+                                        <li>
+                                            <button data-bs-dismiss="modal" class="btn btn-lg btn-primary" type="submit">Tasdiqlash</button>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-bs-dismiss="modal" class="link link-light">Bekor qilish</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- .tab-pane -->
+                </div><!-- .tab-content -->
+            </div><!-- .modal-body -->
+        </div><!-- .modal-content -->
+    </div><!-- .modal-dialog -->
+</div>
