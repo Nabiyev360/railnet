@@ -1,0 +1,359 @@
+{% extends 'hr/base-hr.html' %}
+{% load static %}
+
+{% block content %}
+<div class="nk-content-body">
+        <div class="nk-block-head nk-block-head-sm">
+            <div class="nk-block-between g-3">
+                <div class="nk-block-head-content">
+                    <h3 class="nk-block-title page-title">{{ misconduct.fullname }} / <strong class="text-primary small">{{ misconduct.reason }}</strong></h3>
+                    <div class="nk-block-des text-soft">
+                        <ul class="list-inline">
+                            <li>Raqami: <span class="text-base">{{ misconduct.id }}</span></li>
+                            <li>Vaqti: <span class="text-base">{{ misconduct.created_at|date:'d.m.Y H:i' }}</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="nk-block-head-content">
+                    <a href="{% url 'safety:misconduct_list' %}" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Ortga</span></a>
+                    <a href="{% url 'safety:misconduct_list' %}" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
+                </div>
+            </div>
+        </div><!-- .nk-block-head -->
+        <div class="nk-block">
+            <div class="card card-bordered">
+                <div class="card-aside-wrap">
+                    <div class="card-content">
+                        <ul class="nav nav-tabs nav-tabs-mb-icon nav-tabs-card">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#"><em class="icon ni ni-file-text"></em><span>Qoidabuzarlik</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><em class="icon ni ni-user-circle"></em><span>Xodim</span></a>
+                            </li>
+{#                            <li class="nav-item">#}
+{#                                <a class="nav-link" href="#"><em class="icon ni ni-repeat"></em><span>Transactions</span></a>#}
+{#                            </li>#}
+
+{#                            <li class="nav-item">#}
+{#                                <a class="nav-link" href="#"><em class="icon ni ni-bell"></em><span>Notifications</span></a>#}
+{#                            </li>#}
+{#                            <li class="nav-item">#}
+{#                                <a class="nav-link" href="#"><em class="icon ni ni-activity"></em><span>Activities</span></a>#}
+{#                            </li>#}
+{#                            <li class="nav-item nav-item-trigger d-xxl-none">#}
+{#                                <a href="#" class="toggle btn btn-icon btn-trigger" data-target="userAside"><em class="icon ni ni-user-list-fill"></em></a>#}
+{#                            </li>#}
+                        </ul><!-- .nav-tabs -->
+                        <div class="card-inner">
+                            <div class="nk-block">
+                                <div class="nk-block-head">
+                                    <h5 class="title">Qoidabuzarlik ma'lumotlari</h5>
+{#                                    <p>Basic info, like your name and address, that you use on Nio Platform.</p>#}
+                                </div><!-- .nk-block-head -->
+                                <div class="profile-ud-list">
+                                    <div class="profile-ud-item">
+                                        <div class="profile-ud wider">
+                                            <span class="profile-ud-label">Ro'yxatga oluvchi</span>
+                                            <span class="profile-ud-value">{{ misconduct.created_by }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-ud-item">
+                                        <div class="profile-ud wider">
+                                            <span class="profile-ud-label">Vaqti</span>
+                                            <span class="profile-ud-value">{{ misconduct.created_at|date:"d.m.Y H:i" }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-ud-item">
+                                        <div class="profile-ud wider">
+                                            <span class="profile-ud-label">Kimga nisbatan</span>
+                                            <span class="profile-ud-value">{{ misconduct.fullname }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-ud-item">
+                                        <div class="profile-ud wider">
+                                            <span class="profile-ud-label">Lavozimi</span>
+                                            <span class="profile-ud-value">{{ misconduct.position }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-ud-item">
+                                        <div class="profile-ud wider">
+                                            <span class="profile-ud-label">Qisqacha sababi</span>
+                                            <span class="profile-ud-value">{{ misconduct.reason }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="profile-ud-item">
+                                        <div class="profile-ud wider">
+                                            <span class="profile-ud-label">Xolati</span>
+                                            <span class="profile-ud-value">{{ misconduct.get_status_display }}</span>
+                                        </div>
+                                    </div>
+                                </div><!-- .profile-ud-list -->
+                            </div><!-- .nk-block -->
+                            <div class="nk-divider divider md"></div>
+                            <div class="nk-block">
+                                <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                    <h5 class="title">Batafsil sababi</h5>
+{#                                    <a href="#" class="link link-sm">+ Add Note</a>#}
+                                </div><!-- .nk-block-head -->
+                                <div class="bq-note">
+                                    <div class="bq-note-item">
+                                        <div class="bq-note-text">
+                                            <p>{{ misconduct.comment }}</p>
+                                        </div>
+                                    </div><!-- .bq-note-item -->
+                                </div><!-- .bq-note -->
+                            </div><!-- .nk-block -->
+                            <div class="nk-block">
+                                <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                    <h5 class="title">Bayonnoma</h5>
+{#                                    <a href="#" class="link link-sm">+ Add Note</a>#}
+                                </div><!-- .nk-block-head -->
+                                <div class="bq-note">
+                                    <div class="bq-note-item">
+                                        <div class="bq-note-text">
+                                            <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https://{{ domain }}{% url 'safety:protocol_word' misconduct.id %}" width="100%" height="650px"></iframe>
+                                        </div>
+                                    </div><!-- .bq-note-item -->
+                                </div><!-- .bq-note -->
+                            </div><!-- .nk-block -->
+
+                            {% if misconduct.status == 'sent_to_hr' and misconduct.behest == None %}
+                            <div class="nk-block nk-block-lg">
+                                <div class="nk-block-head">
+                                    <div class="nk-block-head-content">
+                                        <h4 class="title nk-block-title">Buyruq tayorlash</h4>
+                                        <div class="nk-block-des">
+                                            <p>Buyruq tayorlash uchun kerakli ma'lumotlarni to'ldiring</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card card-bordered">
+                                    <div class="card-inner">
+                                        <div class="card-head">
+{#                                            <h5 class="card-title"></h5>#}
+                                        </div>
+                                        <form action="{% url 'hr:misconduct_protocol_behest' misconduct.id %}" method="post">
+                                            {% csrf_token %}
+                                            <div class="row g-4">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label" for="full-name-1">Ijrochi</label>
+                                                        <div class="form-control-wrap">
+                                                            <input type="text" name="performer" class="form-control" value="{{ request.user.profile.full_name }}" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label class="form-label">Jazo turi</label>
+                                                        <br>
+                                                        <ul class="custom-control-group">
+                                                            <li>
+                                                                <div class="custom-control custom-radio custom-control-pro no-control">
+                                                                    <input type="radio" class="custom-control-input" name="punish_type" id="btnRadioHayfsan" value="hayfsan" required>
+                                                                    <label class="custom-control-label" for="btnRadioHayfsan">hayfsan</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="custom-control custom-radio custom-control-pro no-control">
+                                                                    <input type="radio" class="custom-control-input" name="punish_type" id="btnRadio10" value="10%">
+                                                                    <label class="custom-control-label" for="btnRadio10">10%</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="custom-control custom-radio custom-control-pro no-control">
+                                                                    <input type="radio" class="custom-control-input" name="punish_type" id="btnRadioNc20" value="20%">
+                                                                    <label class="custom-control-label" for="btnRadioNc20">20%</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="custom-control custom-radio custom-control-pro no-control">
+                                                                    <input type="radio" class="custom-control-input" name="punish_type" id="btnRadioNc30" value="30%">
+                                                                    <label class="custom-control-label" for="btnRadioNc30">30%</label>
+                                                                </div>
+                                                            </li>
+                                                            <li>
+                                                                <div class="custom-control custom-radio custom-control-pro no-control">
+                                                                    <input type="radio" class="custom-control-input" name="punish_type" id="btnRadioNc50" value="50%">
+                                                                    <label class="custom-control-label" for="btnRadioNc50">50%</label>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+{#                                                <div class="col-lg-6">#}
+{#                                                    <div class="form-group">#}
+{#                                                        <label class="form-label">Payment Methods</label>#}
+{#                                                        <ul class="custom-control-group g-3 align-center">#}
+{#                                                            <li>#}
+{#                                                                <div class="custom-control custom-control-sm custom-checkbox">#}
+{#                                                                    <input type="checkbox" class="custom-control-input" id="pay-card-1">#}
+{#                                                                    <label class="custom-control-label" for="pay-card-1">Card</label>#}
+{#                                                                </div>#}
+{#                                                            </li>#}
+{#                                                            <li>#}
+{#                                                                <div class="custom-control custom-control-sm custom-checkbox">#}
+{#                                                                    <input type="checkbox" class="custom-control-input" id="pay-bitcoin-1">#}
+{#                                                                    <label class="custom-control-label" for="pay-bitcoin-1">Bitcoin</label>#}
+{#                                                                </div>#}
+{#                                                            </li>#}
+{#                                                            <li>#}
+{#                                                                <div class="custom-control custom-control-sm custom-checkbox">#}
+{#                                                                    <input type="checkbox" class="custom-control-input" id="pay-cash-1">#}
+{#                                                                    <label class="custom-control-label" for="pay-cash-1">Cash</label>#}
+{#                                                                </div>#}
+{#                                                            </li>#}
+{#                                                        </ul>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <button type="submit" class="btn btn-lg btn-primary">Buyruq tayorlash</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div><!-- .nk-block -->
+                            {% elif misconduct.behest %}
+                            <div class="nk-block">
+                                <div class="nk-block-head nk-block-head-sm nk-block-between">
+                                    <h5 class="title">Buyruq</h5>
+{#                                    <a href="#" class="link link-sm">+ Add Note</a>#}
+                                </div><!-- .nk-block-head -->
+                                <div class="bq-note">
+                                    <div class="bq-note-item">
+                                        <div class="bq-note-text">
+                                            <iframe src="https://view.officeapps.live.com/op/embed.aspx?src=https://{{ domain }}{% url 'safety:behest_word' misconduct.id %}" width="100%" height="650px"></iframe>
+                                        </div>
+                                    </div><!-- .bq-note-item -->
+                                </div><!-- .bq-note -->
+                            </div><!-- .nk-block -->
+                            {% endif %}
+                        </div><!-- .card-inner -->
+                    </div><!-- .card-content -->
+{#                    <div class="card-aside card-aside-right user-aside toggle-slide toggle-slide-right toggle-break-xxl" data-content="userAside" data-toggle-screen="xxl" data-toggle-overlay="true" data-toggle-body="true">#}
+{#                        <div class="card-inner-group" data-simplebar>#}
+{#                            <div class="card-inner">#}
+{#                                <div class="user-card user-card-s2">#}
+{#                                    <div class="user-avatar lg bg-primary">#}
+{#                                        <span>AB</span>#}
+{#                                    </div>#}
+{#                                    <div class="user-info">#}
+{#                                        <div class="badge bg-outline-light rounded-pill ucap">Investor</div>#}
+{#                                        <h5>...</h5>#}
+{#                                        <span class="sub-text">info@softnio.com</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div><!-- .card-inner -->#}
+{#                            <div class="card-inner card-inner-sm">#}
+{#                                <ul class="btn-toolbar justify-center gx-1">#}
+{#                                    <li><a href="#" class="btn btn-trigger btn-icon"><em class="icon ni ni-shield-off"></em></a></li>#}
+{#                                    <li><a href="#" class="btn btn-trigger btn-icon"><em class="icon ni ni-mail"></em></a></li>#}
+{#                                    <li><a href="#" class="btn btn-trigger btn-icon"><em class="icon ni ni-download-cloud"></em></a></li>#}
+{#                                    <li><a href="#" class="btn btn-trigger btn-icon"><em class="icon ni ni-bookmark"></em></a></li>#}
+{#                                    <li><a href="#" class="btn btn-trigger btn-icon text-danger"><em class="icon ni ni-na"></em></a></li>#}
+{#                                </ul>#}
+{#                            </div><!-- .card-inner -->#}
+{#                            <div class="card-inner">#}
+{#                                <div class="overline-title-alt mb-2">In Account</div>#}
+{#                                <div class="profile-balance">#}
+{#                                    <div class="profile-balance-group gx-4">#}
+{#                                        <div class="profile-balance-sub">#}
+{#                                            <div class="profile-balance-amount">#}
+{#                                                <div class="number">2,500.00 <small class="currency currency-usd">USD</small></div>#}
+{#                                            </div>#}
+{#                                            <div class="profile-balance-subtitle">Invested Amount</div>#}
+{#                                        </div>#}
+{#                                        <div class="profile-balance-sub">#}
+{#                                            <span class="profile-balance-plus text-soft"><em class="icon ni ni-plus"></em></span>#}
+{#                                            <div class="profile-balance-amount">#}
+{#                                                <div class="number">1,643.76</div>#}
+{#                                            </div>#}
+{#                                            <div class="profile-balance-subtitle">Profit Earned</div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div><!-- .card-inner -->#}
+{#                            <div class="card-inner">#}
+{#                                <div class="row text-center">#}
+{#                                    <div class="col-4">#}
+{#                                        <div class="profile-stats">#}
+{#                                            <span class="amount">23</span>#}
+{#                                            <span class="sub-text">Total Order</span>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                    <div class="col-4">#}
+{#                                        <div class="profile-stats">#}
+{#                                            <span class="amount">20</span>#}
+{#                                            <span class="sub-text">Complete</span>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                    <div class="col-4">#}
+{#                                        <div class="profile-stats">#}
+{#                                            <span class="amount">3</span>#}
+{#                                            <span class="sub-text">Progress</span>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div><!-- .card-inner -->#}
+{#                            <div class="card-inner">#}
+{#                                <h6 class="overline-title-alt mb-2">Additional</h6>#}
+{#                                <div class="row g-3">#}
+{#                                    <div class="col-6">#}
+{#                                        <span class="sub-text">User ID:</span>#}
+{#                                        <span>UD003054</span>#}
+{#                                    </div>#}
+{#                                    <div class="col-6">#}
+{#                                        <span class="sub-text">Last Login:</span>#}
+{#                                        <span>15 Feb, 2019 01:02 PM</span>#}
+{#                                    </div>#}
+{#                                    <div class="col-6">#}
+{#                                        <span class="sub-text">KYC Status:</span>#}
+{#                                        <span class="lead-text text-success">Approved</span>#}
+{#                                    </div>#}
+{#                                    <div class="col-6">#}
+{#                                        <span class="sub-text">Register At:</span>#}
+{#                                        <span>Nov 24, 2019</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div><!-- .card-inner -->#}
+{#                            <div class="card-inner">#}
+{#                                <h6 class="overline-title-alt mb-3">Groups</h6>#}
+{#                                <ul class="g-1">#}
+{#                                    <li class="btn-group">#}
+{#                                        <a class="btn btn-xs btn-light btn-dim" href="#">investor</a>#}
+{#                                        <a class="btn btn-xs btn-icon btn-light btn-dim" href="#"><em class="icon ni ni-cross"></em></a>#}
+{#                                    </li>#}
+{#                                    <li class="btn-group">#}
+{#                                        <a class="btn btn-xs btn-light btn-dim" href="#">support</a>#}
+{#                                        <a class="btn btn-xs btn-icon btn-light btn-dim" href="#"><em class="icon ni ni-cross"></em></a>#}
+{#                                    </li>#}
+{#                                    <li class="btn-group">#}
+{#                                        <a class="btn btn-xs btn-light btn-dim" href="#">another tag</a>#}
+{#                                        <a class="btn btn-xs btn-icon btn-light btn-dim" href="#"><em class="icon ni ni-cross"></em></a>#}
+{#                                    </li>#}
+{#                                </ul>#}
+{#                            </div><!-- .card-inner -->#}
+{#                        </div><!-- .card-inner -->#}
+{#                    </div><!-- .card-aside -->#}
+                </div><!-- .card-aside-wrap -->
+            </div><!-- .card -->
+        </div><!-- .nk-block -->
+        <div class="nk-block">
+            <div class="card card-bordered">
+                <div class="card-aside-wrap">
+                    <div class="card-content" style="padding: 22px;">
+                        {% if misconduct.status == 'ready_to_sign' %}
+                        <a href="{% url 'hr:misconduct_send_director' misconduct.id %}" class="btn btn-primary">Rahbarga yuborish</a>
+                        {% else %}
+                            Imzoga yuborilgan
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -17,7 +17,7 @@ class CardView(View):
         if is_auth:
             role = await sync_to_async(lambda: user.profile.role)()
             user_fullname = await sync_to_async(lambda: user.profile.full_name)()
-            base_template = 'base-safety.html'
+            base_template = 'safety/base-safety.html'
         else:
             role = None
             user_fullname = None

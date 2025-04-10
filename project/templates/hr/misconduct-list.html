@@ -1,4 +1,4 @@
-{% extends 'safety/base-safety.html' %}
+{% extends 'hr/base-hr.html' %}
 {% load static %}
 
 {% block content %}
@@ -219,7 +219,7 @@
                             <div class="nk-tb-col nk-tb-col-tools">
                                 <ul class="nk-tb-actions gx-1">
                                     <li class="nk-tb-action-hidden">
-                                        <a href="{% url 'safety:misconduct_details' misconduct.id %}" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Batafsil ko'rish">
+                                        <a href="{% url 'hr:misconduct_details' misconduct.id %}" class="btn btn-trigger btn-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Batafsil ko'rish">
                                             <em class="icon ni ni-eye-fill"></em>
                                         </a>
                                     </li>

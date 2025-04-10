@@ -4,5 +4,5 @@ from .views import CardView
 
 
 urlpatterns = [
-    path('card/<str:pk>', CardView.as_view(), name='card'),
+    path('card-page/<str:pk>', CardView.as_view(), name='card'),
 ]

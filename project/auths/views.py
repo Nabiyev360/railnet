@@ -15,9 +15,11 @@ class LoginView(View):
         if authenticated:
             login(request, authenticated)
             if request.user.profile.role.name == 'Safety Engineer':
-                return redirect('/safety/misconduct-list')
+                return redirect('/safety/misconducts')
+            elif request.user.profile.role.name == 'HR':
+                return redirect('/hr/misconducts')
             else:
-                return redirect('/safety/misconduct-list')
+                return redirect('/safety/misconducts')
         else:
             return redirect('/auths/login')
 
