@@ -118,7 +118,7 @@
                                 </div><!-- .bq-note -->
                             </div><!-- .nk-block -->
 
-                            {% if misconduct.status == 'sent_to_hr' and misconduct.behest == None %}
+                            {% if misconduct.status == 'sent_to_hr' %}
                             <div class="nk-block nk-block-lg">
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
@@ -182,31 +182,6 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-{#                                                <div class="col-lg-6">#}
-{#                                                    <div class="form-group">#}
-{#                                                        <label class="form-label">Payment Methods</label>#}
-{#                                                        <ul class="custom-control-group g-3 align-center">#}
-{#                                                            <li>#}
-{#                                                                <div class="custom-control custom-control-sm custom-checkbox">#}
-{#                                                                    <input type="checkbox" class="custom-control-input" id="pay-card-1">#}
-{#                                                                    <label class="custom-control-label" for="pay-card-1">Card</label>#}
-{#                                                                </div>#}
-{#                                                            </li>#}
-{#                                                            <li>#}
-{#                                                                <div class="custom-control custom-control-sm custom-checkbox">#}
-{#                                                                    <input type="checkbox" class="custom-control-input" id="pay-bitcoin-1">#}
-{#                                                                    <label class="custom-control-label" for="pay-bitcoin-1">Bitcoin</label>#}
-{#                                                                </div>#}
-{#                                                            </li>#}
-{#                                                            <li>#}
-{#                                                                <div class="custom-control custom-control-sm custom-checkbox">#}
-{#                                                                    <input type="checkbox" class="custom-control-input" id="pay-cash-1">#}
-{#                                                                    <label class="custom-control-label" for="pay-cash-1">Cash</label>#}
-{#                                                                </div>#}
-{#                                                            </li>#}
-{#                                                        </ul>#}
-{#                                                    </div>#}
-{#                                                </div>#}
                                                 <div class="col-12">
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-lg btn-primary">Buyruq tayorlash</button>
@@ -346,9 +321,9 @@
             <div class="card card-bordered">
                 <div class="card-aside-wrap">
                     <div class="card-content" style="padding: 22px;">
-                        {% if misconduct.status == 'ready_to_sign' %}
+                        {% if misconduct.status == 'ready_to_send' %}
                         <a href="{% url 'hr:misconduct_send_director' misconduct.id %}" class="btn btn-primary">Rahbarga yuborish</a>
-                        {% else %}
+                        {% elif misconduct.status == 'waiting_sign' %}
                             Imzoga yuborilgan
                         {% endif %}
                     </div>

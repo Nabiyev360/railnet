@@ -62,5 +62,5 @@ def protocol_word_view(request, pk):
 
 def behest_word_view(request, pk):
     misconduct = Misconduct.objects.get(id=pk)
-    behest_path = misconduct.protocol.path
+    behest_path = misconduct.behest.path
     return FileResponse(open(behest_path, 'rb'))

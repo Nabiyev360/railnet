@@ -14,8 +14,8 @@ class Misconduct(models.Model):
     comment = models.TextField(null=True, blank=True)
     status = models.CharField(max_length=50, default='sent_to_hr', choices=(
         ("sent_to_hr", "Kadrga yuborilgan"),
-        ("ready_to_sign", "Imzolash uchun tayyor"),
-        ("unsigned", "Buyruq hali imzolanmagan"),
+        ("ready_to_send", "Rahbarga yuborish uchun tayyor"),
+        ("waiting_sign", "Imzolash kutilmoqda"),
         ("signed", "Imzolangan"),
         ("cancelled", "Bekor qilingan"),
     ))
